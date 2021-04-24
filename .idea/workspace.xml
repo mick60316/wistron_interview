@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc5e7cc4-8f5d-4227-9fe5-dd1e8f7a7ed5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/app/src/main/java/com/example/wistron_interview/Fragment/UsetListFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/app/src/main/res/layout/detail_display_page.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/app/src/main/res/layout/user_list_page.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/app/src/main/java/com/example/wistron_interview/Component/RecycleViewAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/app/src/main/java/com/example/wistron_interview/Component/UserListData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/app/src/main/res/layout/user_recycle_item.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/src/main/java/com/example/wistron_interview/Fragment/InfoDisplayFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/src/main/java/com/example/wistron_interview/Fragment/DetialDisplayFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app/src/main/java/com/example/wistron_interview/Fragment/UsetListFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/src/main/java/com/example/wistron_interview/Fragment/UsetListFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app/src/main/res/layout/detail_display_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/src/main/res/layout/detail_display_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app/src/main/res/layout/user_list_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/src/main/res/layout/user_list_page.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app/src/main/res/navigation/main_navigation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/src/main/res/navigation/main_navigation.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
