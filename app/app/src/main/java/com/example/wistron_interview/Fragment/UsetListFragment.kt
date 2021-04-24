@@ -14,13 +14,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wistron_interview.Component.RecycleViewAdapter
 import com.example.wistron_interview.Component.UserListData
+import com.example.wistron_interview.Presenter.UserListPresenter
 import com.example.wistron_interview.R
+import com.example.wistron_interview.Views.UserListView
 
-class UsetListFragment : Fragment(){
+class UsetListFragment : Fragment(),UserListView{
     lateinit var recyclerView:RecyclerView
     lateinit var _context: Context
     lateinit var navController:NavController
     lateinit var _UserListData:List<UserListData>
+    var userListPresenter : UserListPresenter?=null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,6 +46,10 @@ class UsetListFragment : Fragment(){
 
         Log.i("TEST",""+_UserListData.size);
 
+        userListPresenter= UserListPresenter(this);
+        userListPresenter?.getUserlist();
+
+
         recyclerView =view.findViewById(R.id.user_list)
 
         recyclerView.setAdapter(RecycleViewAdapter(_context, _UserListData, navController))
@@ -53,5 +60,9 @@ class UsetListFragment : Fragment(){
     override fun onAttach(context: Context) {
         super.onAttach(context)
         _context=context
+    }
+
+    override fun displayUserList(userDataList: List<UserListData>) {
+
     }
 }
