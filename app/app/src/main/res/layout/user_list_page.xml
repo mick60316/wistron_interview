@@ -15,6 +15,7 @@
             android:paddingLeft="100px"
             android:paddingTop="50px">
         </TextView>
+
         <androidx.recyclerview.widget.RecyclerView
             android:layout_marginLeft="100px"
             android:id="@+id/user_list"

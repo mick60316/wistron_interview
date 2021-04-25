@@ -5,20 +5,20 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wistron_interview.R
+import com.squareup.picasso.Picasso
 
-class RecycleViewAdapter(context: Context, items: List<UserListData>, navController: NavController):
+class RecycleViewAdapter(context: Context, items: List<UserData>?, navController: NavController):
     RecyclerView.Adapter<RecycleViewAdapter.ViewHolder>(){
 
     val TAG:String ="RecycleViewAdapter"
     val context :Context?=context
-    val items : List<UserListData>?=items
+    val items : List<UserData>?=items
     val navController:NavController?=navController
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
@@ -27,10 +27,11 @@ class RecycleViewAdapter(context: Context, items: List<UserListData>, navControl
         val loginTextView:TextView?= view?.findViewById(R.id.login);
         val siteAdminTextView:TextView?=view?.findViewById(R.id.site_admin);
         val myView:LinearLayout?=view?.findViewById(R.id.myView)
-        fun bind(userListData: UserListData?)
+        fun bind(userData: UserData?,context: Context)
         {
-            loginTextView?.text=userListData?.login
-            siteAdminTextView?.text=userListData?.site_admin
+            Picasso.with(context).load(userData?.avatar_url).into(imageView)
+            loginTextView?.text=userData?.login
+            siteAdminTextView?.text=userData?.site_admin.toString()
 
         }
 
@@ -42,7 +43,14 @@ class RecycleViewAdapter(context: Context, items: List<UserListData>, navControl
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items?.get(position));
+        if (context != null) {
+            holder.bind(items?.get(position),context)
+        }
+        else
+        {
+
+            Log.e(TAG,"Context null")
+        }
         holder.myView?.setOnClickListener(View.OnClickListener {
 
             Log.i(TAG,"Click "+holder.loginTextView?.text.toString());

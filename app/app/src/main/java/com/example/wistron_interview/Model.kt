@@ -1,6 +1,11 @@
 package com.example.wistron_interview
 
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.util.Log
+import com.squareup.picasso.Picasso
+import kotlinx.coroutines.flow.callbackFlow
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import java.io.IOException
@@ -40,6 +45,19 @@ class Model {
 
 
         }
+//        @JvmStatic fun getBitmapByUrl (context: Context, url:String,callback: ModelCallback){
+//                Picasso.with(context).load(url).into(object: com.squareup.picasso.Target {
+//                    override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
+//                        System.out.println("onPrepareLoad")
+//
+//                    }
+//                    override fun onBitmapFailed(errorDrawable: Drawable?) {
+//                        System.out.println("onBitmapFailed")
+//
+//                    }
+//                })
+//
+//        }
         @JvmStatic fun getAllUserData (callback: ModelCallback){
 
             val client = OkHttpClient().newBuilder()

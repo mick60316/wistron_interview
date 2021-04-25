@@ -1,24 +1,34 @@
 package com.example.wistron_interview.Presenter
 
-import android.os.Message
+import android.content.Context
+import android.graphics.Bitmap
 import android.util.Log
+import com.example.wistron_interview.Component.UserData
 import com.example.wistron_interview.Model
 import com.example.wistron_interview.ModelCallback
 import com.example.wistron_interview.Views.UserListView
 import org.json.JSONArray
 import org.json.JSONException
-import org.json.JSONObject
 
-class UserListPresenter(view: UserListView) {
+class UserListPresenter(view: UserListView,context:Context) {
 
     val TAG :String ="UserListPresenter";
     val view :UserListView=view
+    val context:Context=context;
+
     fun getUserlist ()
     {
+
+
         Model.getAllUserData(object : ModelCallback {
             override fun onSuccess(data: String) {
                 Log.i(TAG, " Get data success")
-                convertJsonStrToUserList(data)
+                var userDataList=  convertJsonStrToUserList(data)
+                view.displayUserList(userDataList);
+                for (i in 0 until userDataList.size) {
+                    var index =userDataList.get(i)
+                    System.out.println(index.login+" "+index.site_admin)
+                }
                 //System.out.println(data)
             }
 
@@ -28,15 +38,24 @@ class UserListPresenter(view: UserListView) {
         })
 
     }
-    private fun convertJsonStrToUserList(jsonStr: String)
+    private fun convertJsonStrToUserList(jsonStr: String) :List<UserData>
     {
+        var userDataList:List<UserData>?=null
+        userDataList= emptyList()
         try {
             val userArray = JSONArray(jsonStr)
             for (i in 0 until userArray.length()) {
                 val userObj = userArray.getJSONObject(i)
                 val login =userObj.getString("login");
-                System.out.println(login);
+                val avatar_url =userObj.getString("avatar_url")
+                val site_admin =userObj.getBoolean("site_admin")
+                var userData: UserData=UserData(avatar_url,login,site_admin)
+                userDataList+=userData
+
             }
+
+
+
 //            val dataJsonObject: String = jsonObject.getString("data")
 //            val attractionsObjArray = JSONArray(dataJsonObject)
 //            for (i in 0 until attractionsObjArray.length()) {
@@ -53,8 +72,11 @@ class UserListPresenter(view: UserListView) {
         } catch (e: JSONException) {
             e.printStackTrace()
         }
-
+        return userDataList
     }
+
+
+
 
 
 }
