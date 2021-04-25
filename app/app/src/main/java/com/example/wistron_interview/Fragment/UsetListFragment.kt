@@ -25,11 +25,11 @@ class UsetListFragment : Fragment(),UserListView{
     lateinit var _context: Context
     lateinit var navController:NavController
     lateinit var _UserData:List<UserData>
-    val UPDATE_RECYCLE_ITEMS=1
+    private val UPDATE_RECYCLE_ITEMS=1
+    private val TAG :String= "UsetListFragment"
     private val mHandler = object : Handler() {
 
         override fun handleMessage(msg: Message) {
-
             when(msg.what)
             {
                 UPDATE_RECYCLE_ITEMS->
@@ -47,23 +47,15 @@ class UsetListFragment : Fragment(),UserListView{
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.i(TAG,"onCreateView")
+
+
         navController=findNavController()
         return inflater.inflate(R.layout.user_list_page, container, false);
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        _UserData= emptyList()
-//        for (i in 0..10)
-//        {
-//            var bitmap = Bitmap.createBitmap(100, 800, Bitmap.Config.RGB_565)
-//
-//            var UserIndex :UserListData=UserListData(bitmap,""+i,""+i);
-//            _UserListData+=UserIndex;
-//        }
-
-        Log.i("TEST",""+_UserData.size);
-
+        Log.i(TAG,"onViewCreated")
         userListPresenter= UserListPresenter(this,_context);
         userListPresenter?.getUserlist();
 
@@ -79,10 +71,12 @@ class UsetListFragment : Fragment(),UserListView{
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        Log.i(TAG,"onAttach")
         _context=context
     }
 
     override fun displayUserList(userDataList: List<UserData>) {
+        Log.i(TAG,"Display User List to RecycleView User Count : "+userDataList.size)
         val msg =Message()
         msg.what=UPDATE_RECYCLE_ITEMS
         msg.obj=userDataList

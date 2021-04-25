@@ -13,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.example.wistron_interview.R
 
 class DetialDisplayFragment  : Fragment() {
+    private val TAG :String = "DetialDisplayFragment"
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
