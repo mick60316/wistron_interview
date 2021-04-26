@@ -6,6 +6,12 @@
 ## 架構
 為了遵守MVP架構，我設計了兩個View分別對應兩個Presenter，最後指向同一個Model進行管理。
 ### UsetListFragment
+主要組成為RecycleView，因此物件同時具有Scroll與Linear Layout的特性，能夠減少開發時間。透過displayUserList獲得由Presenter將Json字串拆解並組裝成指定物件後，透過此function傳至View。然而因為還要下載圖片，需要透過handler轉接至main thread。   
+### DetialDisplayFragment
+透過displayUserData function將Presenter獲得的資料傳送至View上，並且因為下載圖片的關係，透過handler至main thread運作。
+
+
+
 
 ### API Get
 * Get User List
