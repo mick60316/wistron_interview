@@ -11,6 +11,11 @@
 透過displayUserData function將Presenter獲得的資料傳送至View上，並且因為下載圖片的關係，透過handler至main thread運作。
 
 
+### UserListPresenter
+利用Callback的方式向Model獲得資料，並且將資料透過view的interface傳送至view上。
+
+
+
 
 
 ### API Get
