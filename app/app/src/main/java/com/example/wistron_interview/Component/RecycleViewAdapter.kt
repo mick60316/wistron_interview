@@ -1,6 +1,7 @@
 package com.example.wistron_interview.Component
 
 import android.content.Context
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -27,7 +28,7 @@ class RecycleViewAdapter(context: Context, items: List<UserData>?, navController
         val loginTextView:TextView?= view?.findViewById(R.id.login);
         val siteAdminTextView:TextView?=view?.findViewById(R.id.site_admin);
         val myView:LinearLayout?=view?.findViewById(R.id.myView)
-        fun bind(userData: UserData?,context: Context)
+        fun bind(userData: UserData?, context: Context)
         {
             Picasso.with(context).load(userData?.avatar_url).into(imageView)
             loginTextView?.text=userData?.login
@@ -44,16 +45,19 @@ class RecycleViewAdapter(context: Context, items: List<UserData>?, navController
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (context != null) {
-            holder.bind(items?.get(position),context)
+            holder.bind(items?.get(position), context)
         }
         else
         {
 
-            Log.e(TAG,"Context null")
+            Log.e(TAG, "Context null")
         }
         holder.myView?.setOnClickListener(View.OnClickListener {
-
-            Log.i(TAG,"Click "+holder.loginTextView?.text.toString());
+            // do something
+            val bundle = Bundle()
+            bundle.putString("login",items?.get(position)?.login)
+            navController?.navigate(R.id.action_usetListFragment_to_detialDisplayFragment,bundle);
+            Log.i(TAG, "Click " + holder.loginTextView?.text.toString());
 
         })
 

@@ -10,11 +10,11 @@ import com.example.wistron_interview.Views.UserListView
 import org.json.JSONArray
 import org.json.JSONException
 
-class UserListPresenter(view: UserListView,context:Context) {
+class UserListPresenter(view: UserListView) {
 
     val TAG :String ="UserListPresenter";
     val view :UserListView=view
-    val context:Context=context;
+
 
     fun getUserlist ()
     {
@@ -53,22 +53,6 @@ class UserListPresenter(view: UserListView,context:Context) {
                 userDataList+=userData
 
             }
-
-
-
-//            val dataJsonObject: String = jsonObject.getString("data")
-//            val attractionsObjArray = JSONArray(dataJsonObject)
-//            for (i in 0 until attractionsObjArray.length()) {
-//                val attractionObj = attractionsObjArray.getJSONObject(i)
-//                val id = attractionObj.getInt("id")
-//                val name = attractionObj.getString("name")
-//                val attraction = Attraction(id, name)
-//                attractions.add(attraction)
-//            }
-//            val msg = Message.obtain()
-//            msg.what = UPDATE_RECYCLE_VIEW
-//            msg.obj = attractions
-//            mHandler.sendMessage(msg)
         } catch (e: JSONException) {
             e.printStackTrace()
         }

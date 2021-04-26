@@ -56,7 +56,8 @@ class UsetListFragment : Fragment(),UserListView{
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         Log.i(TAG,"onViewCreated")
-        userListPresenter= UserListPresenter(this,_context);
+        _UserData= emptyList()
+        userListPresenter= UserListPresenter(this);
         userListPresenter?.getUserlist();
 
         recyclerView =view.findViewById(R.id.user_list)

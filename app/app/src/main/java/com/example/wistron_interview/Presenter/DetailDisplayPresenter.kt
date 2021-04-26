@@ -3,8 +3,9 @@ package com.example.wistron_interview.Presenter
 import android.util.Log
 import com.example.wistron_interview.Model
 import com.example.wistron_interview.ModelCallback
+import com.example.wistron_interview.Views.DetailDisplayView
 
-class DetailDisplayPresenter {
+class DetailDisplayPresenter (view:DetailDisplayView){
     val TAG :String ="DetailDisplayPresenter";
 
     fun getUserInfo (login:String)
