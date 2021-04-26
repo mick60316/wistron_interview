@@ -15,7 +15,15 @@ class DetailDisplayPresenter (view:DetailDisplayView){
     val TAG :String ="DetailDisplayPresenter";
     val view : DetailDisplayView =view
     fun getUserInfo (login:String)
-    {
+    {   /*
+            Get user list from model
+            sent data from callback to view
+            Argv:
+                login :user name who want to search
+
+
+         */
+
         Model.getUserData(login,object : ModelCallback {
 
             override fun onSuccess(data: String) {
@@ -33,7 +41,14 @@ class DetailDisplayPresenter (view:DetailDisplayView){
     }
     fun convertJsonStrToUserDetailData (jsonStr:String):UserDetailData
     {
+        /*
+            Convert string to custom class UserDetailData
+            Argv :
+                 jsonStr : json string which from github api
 
+            return UserDetailData
+
+         */
         var  userDetailData:UserDetailData?=null
         try {
             val userData = JSONObject(jsonStr)

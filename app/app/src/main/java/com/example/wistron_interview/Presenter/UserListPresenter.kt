@@ -18,6 +18,12 @@ class UserListPresenter(view: UserListView) {
 
     fun getUserlist ()
     {
+        /*
+            Get user list from model
+
+            sent data from callback to view
+
+         */
         Model.getAllUserData(object : ModelCallback {
             override fun onSuccess(data: String) {
                 Log.i(TAG, " Get data success")
@@ -38,6 +44,16 @@ class UserListPresenter(view: UserListView) {
     }
     private fun convertJsonStrToUserList(jsonStr: String) :List<UserData>
     {
+
+        /*
+            Convert string to custom class UserData
+            Argv :
+                 jsonStr : json string which from github api
+
+            return UserData
+
+         */
+
         var userDataList:List<UserData>?=null
         userDataList= emptyList()
         try {

@@ -15,6 +15,13 @@ class Model {
         val TAG: String = "MODEL"
         @JvmStatic fun getUserData (login:String ,callback: ModelCallback)
         {
+            /*
+               Get user information from https://api.github.com/users
+
+               Argv :
+                    login : user name who is want to search
+                    callback : callback function to return result
+             */
             val client = OkHttpClient().newBuilder()
                     .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
                     .build()
@@ -47,7 +54,13 @@ class Model {
         }
 
         @JvmStatic fun getAllUserData (callback: ModelCallback){
+            /*
+              Get all user data from https://api.github.com/users
 
+              Argv :
+
+                   callback : callback function to return result
+            */
             val client = OkHttpClient().newBuilder()
                 .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
                 .build()
