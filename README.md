@@ -12,7 +12,13 @@
 
 
 ### UserListPresenter
-利用Callback的方式向Model獲得資料，並且將資料透過view的interface傳送至view上。
+利用Callback的方式向Model獲得資料，將資料解析之後獲得三個String資料，將其打包成UserData此資料結構。接著透過view.callback 的方式傳遞至view上顯示。
+
+### DetailDisplayPresenter
+利用Callback的方式向Model獲得資料，將資料解析並製作成UserDetialData此資料結構。接著透過view.callback 的方式傳遞至view上顯示。
+
+### Model 
+負責串接兩個需要透過API獲得資料的功能。分別是Get User List以及Get User Info。此class會將獲得的資料透過callback的方式傳送至Presenter。
 
 
 
