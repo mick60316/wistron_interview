@@ -18,8 +18,6 @@ class UserListPresenter(view: UserListView) {
 
     fun getUserlist ()
     {
-
-
         Model.getAllUserData(object : ModelCallback {
             override fun onSuccess(data: String) {
                 Log.i(TAG, " Get data success")
@@ -51,7 +49,6 @@ class UserListPresenter(view: UserListView) {
                 val site_admin =userObj.getBoolean("site_admin")
                 var userData: UserData=UserData(avatar_url,login,site_admin)
                 userDataList+=userData
-
             }
         } catch (e: JSONException) {
             e.printStackTrace()

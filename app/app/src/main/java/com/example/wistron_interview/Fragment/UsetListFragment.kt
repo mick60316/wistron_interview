@@ -8,7 +8,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
@@ -24,10 +23,11 @@ class UsetListFragment : Fragment(),UserListView{
     lateinit var recyclerView:RecyclerView
     lateinit var _context: Context
     lateinit var navController:NavController
-    lateinit var _UserData:List<UserData>
+    lateinit var userData:List<UserData>
     private val UPDATE_RECYCLE_ITEMS=1
     private val TAG :String= "UsetListFragment"
-    private val mHandler = object : Handler() {
+    private var userListPresenter : UserListPresenter?=null
+    private val handler = object : Handler() {
 
         override fun handleMessage(msg: Message) {
             when(msg.what)
@@ -41,7 +41,7 @@ class UsetListFragment : Fragment(),UserListView{
         }
     }
 
-    var userListPresenter : UserListPresenter?=null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -56,12 +56,12 @@ class UsetListFragment : Fragment(),UserListView{
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         Log.i(TAG,"onViewCreated")
-        _UserData= emptyList()
+        userData= emptyList()
         userListPresenter= UserListPresenter(this);
         userListPresenter?.getUserlist();
 
         recyclerView =view.findViewById(R.id.user_list)
-        recyclerView.setAdapter(RecycleViewAdapter(_context, _UserData, navController))
+        recyclerView.setAdapter(RecycleViewAdapter(_context, userData, navController))
         recyclerView.setLayoutManager(LinearLayoutManager(_context))
         super.onViewCreated(view, savedInstanceState)
 
@@ -81,7 +81,7 @@ class UsetListFragment : Fragment(),UserListView{
         val msg =Message()
         msg.what=UPDATE_RECYCLE_ITEMS
         msg.obj=userDataList
-        mHandler.sendMessage(msg)
+        handler.sendMessage(msg)
 
     }
 }

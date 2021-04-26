@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        //Picasso.with(this).load("https://avatars.githubusercontent.com/u/46?v=4").into(img)
+
 
     }
 
